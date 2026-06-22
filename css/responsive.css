@@ -191,10 +191,7 @@
 	    font-size: 17px;
 	}
 }
-@media (max-width: 650px) {
-	/* revolution slider fix styles */
-	.tp-caption {display: none !important;}
-}
+
 @media (max-width: 639px) {
 	.service-box .content .title a {
 	    font-size: 20px;

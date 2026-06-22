@@ -943,7 +943,6 @@ ul, li {
 .main-slider{
 	position:relative;
 	width:100%;
-	overflow:hidden;	
 }
 
 .main-slider .circular-drop{
@@ -4747,3 +4746,113 @@ ul, li {
   .flb.cl {
 	background: #d60303
   }
+
+  /* Slider Wrapper */
+.hero-slider {
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+/* Inner Container for Animation */
+.slider-inner {
+    display: flex;
+    width: 300%; /* 100% multiplied by the total number of slides */
+    height: 100%;
+    animation: slideChange 15s infinite ease-in-out;
+}
+
+/* Individual Slide */
+.slide {
+    width: 100vw;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Semi-transparent Overlay for Text Readability */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Darkened tint */
+    z-index: 1;
+}
+
+/* Typography & Content Layout */
+.slide-content {
+    position: relative;
+    z-index: 2; /* Sits above the dark overlay */
+    text-align: center;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.slide-content h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.slide-content p {
+    font-size: 1.65rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* Call to Action Button */
+.cta-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #d60303;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #d60303;
+}
+
+/* Infinite Sliding Keyframe Logic */
+/* Calculates positions based on 3 slides over a 15-second total duration */
+@keyframes slideChange {
+    /* Slide 1 View Time */
+    0%, 25% {
+        transform: translateX(0%);
+    }
+    /* Transition from Slide 1 to 2 */
+    33%, 58% {
+        transform: translateX(-33.3333%);
+    }
+    /* Transition from Slide 2 to 3 */
+    66%, 91% {
+        transform: translateX(-66.6666%);
+    }
+    /* Reset smoothly back to Slide 1 */
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Responsive Scaling for Smaller Devices */
+@media (max-width: 768px) {
+    .slide-content h1 {
+        font-size: 2.2rem;
+    }
+    .slide-content p {
+        font-size: 1rem;
+    }
+}
